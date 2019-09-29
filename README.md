@@ -65,4 +65,4 @@ URLSession.shared
 ```
 ___
 
-This µFramework was heavily inspired by RxSwift's [DisposeBag]("https://github.com/ReactiveX/RxSwift/blob/master/RxSwift/Disposables/DisposeBag.swift")
+This µFramework was heavily inspired by RxSwift's [DisposeBag](https://github.com/ReactiveX/RxSwift/blob/master/RxSwift/Disposables/DisposeBag.swift)
