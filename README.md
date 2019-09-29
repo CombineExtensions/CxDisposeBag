@@ -2,6 +2,8 @@
 
 ## A µFramework to retain `Cancellable` objects.
 
+![Build Status](https://github.com/CombineExtensions/DisposeBag/workflows/CI/badge.svg) ![swift-package-manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-red.svg) ![platforms](https://img.shields.io/badge/Platform-iOS%20|%20macOS%20|%20watchOS-informational.svg) ![swift-version](https://img.shields.io/badge/Swift-5.1-orange.svg) ![license](https://img.shields.io/badge/License-MIT-c41d3a.svg)
+
 Working with Combine is great, but I'm not a big fan of having to assign a `Cancellable` to a variable just to keep it around. 
 
 With a `DisposeBag` we can omit assigning an object conforming to`Cancellable` to a variable and worry less about the semantic meaning of the variable and let the declaritive nature of Combine speak for itself:
