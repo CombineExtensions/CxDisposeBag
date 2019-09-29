@@ -1,10 +1,10 @@
 # DisposeBag
 
-## A µFrameworkRetain to retain `AnyCancellable` objects.
+## A µFramework to retain `Cancellable` objects.
 
 Working with Combine is great, but I'm not a big fan of having to assign a `Cancellable` to a variable just to keep it around. 
 
-With a `DisposeBag` we can omit assigning an `AnyCancellable` to a variable and worry less about the semantic meaning of the variable and let the declaritive nature of Combine speak for itself
+With a `DisposeBag` we can omit assigning an object conforming to`Cancellable` to a variable and worry less about the semantic meaning of the variable and let the declaritive nature of Combine speak for itself:
 
 ```swift
 let passthrough = PassthroughSubject<Void, Never>)()
@@ -53,8 +53,7 @@ let disposeBag = DisposeBag()
 */
 URLSession.shared
   .dataTaskPublisher(for: someUrl)
-  .map { data, _ in data }
-  .flatMap { data in
+  .flatMap { data, _ in
     Just(data)
       .decode(type: DecodableValue.self, decoder: JSONDecoder())
       .catch { _ in
@@ -66,4 +65,4 @@ URLSession.shared
 ```
 ___
 
-This µFramework was heavily inspired by RxSwift's [DisposeBag]("https://github.com/ReactiveX/RxSwift/blob/master/RxSwift/Disposables/DisposeBag.swift)
+This µFramework was heavily inspired by RxSwift's [DisposeBag]("https://github.com/ReactiveX/RxSwift/blob/master/RxSwift/Disposables/DisposeBag.swift")

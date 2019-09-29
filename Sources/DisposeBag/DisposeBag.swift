@@ -11,11 +11,9 @@ public final class DisposeBag {
   /// Inserts a `Cancellable` into the `DisposeBag` object
   /// - Parameter cancellable: The cancellable to retain
   func insert(cancellable: Cancellable) {
-    _ = semaphore.wait(timeout: .distantFuture)
+    semaphore.wait()
     
-    defer {
-      semaphore.signal()
-    }
+    defer { semaphore.signal() }
     
     cancellables.append(cancellable)
   }
