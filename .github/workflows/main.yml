@@ -7,5 +7,7 @@ jobs:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v1
+    - name: Switch to Xcode 11.0
+      run: xcode-select --switch /Applications/Xcode_11.app/Contents/Developer
     - name: Run Package Tests
       run: swift test
