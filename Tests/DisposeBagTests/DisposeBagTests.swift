@@ -1,5 +1,5 @@
 import XCTest
-import DisposeBag
+import CxDisposeBag
 import Combine
 
 final class DisposeBagTests: XCTestCase {

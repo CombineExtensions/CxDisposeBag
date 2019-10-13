@@ -1,4 +1,4 @@
-# DisposeBag
+# CxDisposeBag
 
 ## A µFramework to retain `Cancellable` objects.
 
