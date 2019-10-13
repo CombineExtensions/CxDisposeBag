@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-  name: "DisposeBag",
+  name: "CxDisposeBag",
   platforms: [
     .macOS(.v10_15),
     .iOS(.v13),
@@ -12,18 +12,18 @@ let package = Package(
   ],
   products: [
     .library(
-      name: "DisposeBag",
-      targets: ["DisposeBag"]
+      name: "CxDisposeBag",
+      targets: ["CxDisposeBag"]
     ),
   ],
   targets: [
     .target(
-      name: "DisposeBag",
+      name: "CxDisposeBag",
       dependencies: []
     ),
     .testTarget(
       name: "DisposeBagTests",
-      dependencies: ["DisposeBag"]
+      dependencies: ["CxDisposeBag"]
     ),
   ]
 )
