@@ -1,0 +1,12 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/stevensherry/Code/CombineX/DisposeBag/Sources/CxDisposeBag/DisposeBag.swift",
+      "line": 10,
+      "symbol": "DisposeBag.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/stevensherry/Code/CombineX/DisposeBag"
+}
