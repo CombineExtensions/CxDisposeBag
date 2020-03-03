@@ -4,67 +4,6 @@
 
 ![Build Status](https://github.com/CombineExtensions/DisposeBag/workflows/CI/badge.svg) ![swift-package-manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-red.svg) ![platforms](https://img.shields.io/badge/Platform-iOS%20|%20macOS%20|%20watchOS-informational.svg) ![swift-version](https://img.shields.io/badge/Swift-5.1-orange.svg) ![license](https://img.shields.io/badge/License-MIT-c41d3a.svg)
 
-Working with Combine is great, but I'm not a big fan of having to assign a `Cancellable` to a variable just to keep it around. 
+~~Working with Combine is great, but I'm not a big fan of having to assign a `Cancellable` to a variable just to keep it around.~~
 
-With a `DisposeBag` we can omit assigning an object conforming to`Cancellable` to a variable and worry less about the semantic meaning of the variable and let the declaritive nature of Combine speak for itself:
-
-```swift
-let passthrough = PassthroughSubject<Void, Never>)()
-let disposeBag = DisposeBag()
-
-// The `DisposeBag` retains the Cancellable until it is deinitialized
-
-passthrough.sink { _ in print("Received Event") }
-  .disposed(by: disposeBag)
-```
-
-The reason we need to retain is so that we can still receive events.
-```swift
-let passthrough = PassthroughSubject<Void, Never>()
-
-// Immediately deinitializes and we will never receive events
-_ = passthrough.sink { _ in 
-    print("Received Event") 
-}
-```
-
-Without `DisposeBag`:
-
-```swift
-let passthrough = PassthroughSubject<Void, Never>()
-
-let cancellable = passthrough.sink { _ in 
-  print("Received Event") 
-}
-```
-
-This isn't so cumbsersome with one value, but when you have several events you want to receive, coming up with meaningful variable names is not such an easy task. 
-
-____
-
-### A less contrived example:
-
-```swift
-var someDecodableValue: DecodableValue?
-let disposeBag = DisposeBag()
-
-/*
-  What would be a good variable name for this subscription? 
-  decodableValueAssigner? decodableValueCancellable? Even those names
-  don't really fully describe what is going on.
-*/
-URLSession.shared
-  .dataTaskPublisher(for: someUrl)
-  .flatMap { data, _ in
-    Just(data)
-      .decode(type: DecodableValue.self, decoder: JSONDecoder())
-      .catch { _ in
-        DecodeableValue.default
-      }
-  }
-  .assign(to: \Example.someDecodableValue, on: self)
-  .disposed(by: disposeBag)
-```
-___
-
-This µFramework was heavily inspired by RxSwift's [DisposeBag](https://github.com/ReactiveX/RxSwift/blob/master/RxSwift/Disposables/DisposeBag.swift)
+When this was written, I was unaware of AnyCancellable's [`store(in:)` method](https://developer.apple.com/documentation/combine/anycancellable/3333294-store). Which, makes this library pretty pointless! Don't use it!
